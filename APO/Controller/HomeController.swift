@@ -16,10 +16,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         fetchEvents()
         navigationItem.title = "Upcoming Events"
+
         collectionView?.backgroundColor = UIColor(white: 1, alpha: 0.5)
         collectionView?.register(EventCell.self, forCellWithReuseIdentifier: "cellId")
-        
-        
     }
 
     var events: [Event]?
@@ -33,7 +32,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func showControllerForEvent(event: Event) {
         let layout = UICollectionViewLayout()
-        let EventViewController = EventController(collectionViewLayout: layout)
+        let EventViewController:EventController = EventController(collectionViewLayout: layout)
         EventViewController.event = event
     
 //        navigationController?.navigationBar.tintColor = UIColor.white
