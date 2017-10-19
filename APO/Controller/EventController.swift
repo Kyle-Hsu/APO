@@ -10,8 +10,10 @@ import UIKit
 
 class EventController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private let cellId = "cellId"
+    private let eventTimeCellId = "eventTimeCellId"
+    private let signUpsCellId = "signUpsCellId"
     private let headerId = "headerId"
+    
     
     var event: Event? {
         didSet {
@@ -22,69 +24,63 @@ class EventController: UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        collectionView?.delegate = self
-//        collectionView?.dataSource = self
         let layout = UICollectionViewFlowLayout()
+        
+        //line that fixed the problem
         collectionView? = UICollectionView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), collectionViewLayout: layout)
-        collectionView?.backgroundColor = UIColor.lightGray
+        collectionView?.backgroundColor = UIColor.white
         collectionView?.register(EventDetailHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(EventTimeCell.self, forCellWithReuseIdentifier: eventTimeCellId)
+        collectionView?.register(SignupsCell.self, forCellWithReuseIdentifier: signUpsCellId)
         collectionView?.reloadData()
     }
 
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell  {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: eventTimeCellId, for: indexPath) as! EventTimeCell
+            cell.event = event
+            return cell
+        }
         
-        cell.backgroundColor = UIColor.blue
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: signUpsCellId, for: indexPath) as! SignupsCell
+        cell.users = event?.users
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        if indexPath.item == 0 {
+            return CGSize(width: view.frame.width, height: 80)
+        }
+        let height = CGFloat((event?.users?.count)! * 20) + 20
+        return CGSize(width: view.frame.width, height: height)
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! EventDetailHeader
         header.event = event
+        header.backgroundColor = UIColor.white
         return header
     }
 
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        return CGSize(width: view.frame.width, height: 100)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
-
-class EventDetailHeader: BaseCell {
-    var event: Event? {
-        didSet {
-            if let eventDesc = event?.eventDesc {
-                descLabel.text = eventDesc
-            }
-        }
-    }
-    
-    let descLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.sizeToFit()
-        return label
-    }()
-    
-    
+class testcell: BaseCell {
     override func setupViews() {
-        super.setupViews()
-        addSubview(descLabel)
-        self.backgroundColor = UIColor.lightGray
-        addConstraintsWithFormat(format: "V:|[v0]|", views: descLabel)
-        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: descLabel)
+        
     }
 }

@@ -15,6 +15,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // Do any additional setup after loading the view, typically from a nib.
         
         fetchEvents()
+        fetchSignups()
         navigationItem.title = "Upcoming Events"
 
         collectionView?.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -22,10 +23,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
 
     var events: [Event]?
-
+    
     func fetchEvents() {
-        ApiService.sharedInstance.fetchVideos { (events: [Event]) in
+        ApiService.sharedInstance.fetchEvents { (events: [Event]) in
             self.events = events
+            self.collectionView?.reloadData()
+        }
+    }
+    
+    var signups: [Signup]?
+    
+    func fetchSignups() {
+        ApiService.sharedInstance.fetchSignups { (signups: [Signup]) in
+            self.signups = signups
             self.collectionView?.reloadData()
         }
     }
@@ -33,17 +43,21 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func showControllerForEvent(event: Event) {
         let layout = UICollectionViewLayout()
         let EventViewController:EventController = EventController(collectionViewLayout: layout)
+        
+        var users: [User] = []
+        for index in 0...(signups?.count)!-1 {
+            if signups![index].eventID == event.eventID {
+                users.append((signups?[index].user)!)
+            }
+        }
+        event.users = users
         EventViewController.event = event
-    
-//        navigationController?.navigationBar.tintColor = UIColor.white
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.pushViewController(EventViewController, animated: true)
         
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let event = self.events![indexPath.item]
-        print(event.eventName)
         showControllerForEvent(event: event)
     }
     

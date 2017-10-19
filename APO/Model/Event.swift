@@ -15,11 +15,9 @@ class Event: NSObject {
     var eventType: NSNumber?
     var eventStart: NSDate?
     var eventEnd: NSDate?
+    var eventLoc: String?
     var eventCap: NSNumber?
+    var users: [User]?
 }
 
-class User: NSObject {
-    var userFName: String?
-    var userLName: String?
-    var userFamily: String?
-}
+

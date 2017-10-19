@@ -12,6 +12,7 @@
 		763C8D061F92F6AA00317F2D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D051F92F6AA00317F2D /* ApiService.swift */; };
 		763C8D081F92FA7F00317F2D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 763C8D071F92FA7F00317F2D /* Default-568h@2x.png */; };
 		763C8D0B1F948BAB00317F2D /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D0A1F948BAB00317F2D /* EventController.swift */; };
+		76485E3C1F97EEE5002306AE /* EventHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76485E3B1F97EEE5002306AE /* EventHeader.swift */; };
 		767A78101F91872400F59ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767A780F1F91872400F59ECD /* AppDelegate.swift */; };
 		767A78121F91872400F59ECD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767A78111F91872400F59ECD /* HomeController.swift */; };
 		767A78151F91872400F59ECD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767A78131F91872400F59ECD /* Main.storyboard */; };
@@ -19,6 +20,13 @@
 		767A781A1F91872400F59ECD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767A78181F91872400F59ECD /* LaunchScreen.storyboard */; };
 		767A78251F91872400F59ECD /* APOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767A78241F91872400F59ECD /* APOTests.swift */; };
 		767A78331F918A4000F59ECD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767A78321F918A4000F59ECD /* Extensions.swift */; };
+		76B766A01F9878BE00DA9A3A /* EventDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7669F1F9878BE00DA9A3A /* EventDescriptionController.swift */; };
+		76B766A21F98827200DA9A3A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A11F98827200DA9A3A /* User.swift */; };
+		76B766A41F98916800DA9A3A /* SignupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A31F98916800DA9A3A /* SignupsCell.swift */; };
+		76B766A61F98975200DA9A3A /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A51F98975200DA9A3A /* Signup.swift */; };
+		76B766AA1F98A58A00DA9A3A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A91F98A58A00DA9A3A /* UserCell.swift */; };
+		76E1A9DD1F96A6B90004FBC9 /* EventTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E1A9DC1F96A6B90004FBC9 /* EventTimeCell.swift */; };
+		76E1A9E91F96C2090004FBC9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 76E1A9E81F96C2090004FBC9 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,11 +40,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70688423FFBF19519B727A94 /* Pods-APO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APO/Pods-APO.debug.xcconfig"; sourceTree = "<group>"; };
 		763C8CFF1F92C9C200317F2D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		763C8D021F92CCDD00317F2D /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		763C8D051F92F6AA00317F2D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		763C8D071F92FA7F00317F2D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		763C8D0A1F948BAB00317F2D /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		76485E3B1F97EEE5002306AE /* EventHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeader.swift; sourceTree = "<group>"; };
 		767A780C1F91872400F59ECD /* APO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		767A780F1F91872400F59ECD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		767A78111F91872400F59ECD /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -48,6 +58,15 @@
 		767A78241F91872400F59ECD /* APOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOTests.swift; sourceTree = "<group>"; };
 		767A78261F91872400F59ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		767A78321F918A4000F59ECD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		76B7669F1F9878BE00DA9A3A /* EventDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDescriptionController.swift; sourceTree = "<group>"; };
+		76B766A11F98827200DA9A3A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		76B766A31F98916800DA9A3A /* SignupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupsCell.swift; sourceTree = "<group>"; };
+		76B766A51F98975200DA9A3A /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
+		76B766A91F98A58A00DA9A3A /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		76E1A9DC1F96A6B90004FBC9 /* EventTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimeCell.swift; sourceTree = "<group>"; };
+		76E1A9E81F96C2090004FBC9 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E5658E86945A41888DE5F4DC /* Pods-APO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APO.release.xcconfig"; path = "Pods/Target Support Files/Pods-APO/Pods-APO.release.xcconfig"; sourceTree = "<group>"; };
+		FA74A7887045306C96E3F582 /* libPods-APO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-APO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +87,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C0B26267D57378282F3FC90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70688423FFBF19519B727A94 /* Pods-APO.debug.xcconfig */,
+				E5658E86945A41888DE5F4DC /* Pods-APO.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		763C8CFE1F92C9B800317F2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				763C8CFF1F92C9C200317F2D /* Event.swift */,
+				76B766A11F98827200DA9A3A /* User.swift */,
+				76B766A51F98975200DA9A3A /* Signup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -80,6 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				763C8D021F92CCDD00317F2D /* EventCell.swift */,
+				76E1A9DC1F96A6B90004FBC9 /* EventTimeCell.swift */,
+				76485E3B1F97EEE5002306AE /* EventHeader.swift */,
+				76B766A31F98916800DA9A3A /* SignupsCell.swift */,
+				76B766A91F98A58A00DA9A3A /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -97,6 +131,7 @@
 			children = (
 				767A78111F91872400F59ECD /* HomeController.swift */,
 				763C8D0A1F948BAB00317F2D /* EventController.swift */,
+				76B7669F1F9878BE00DA9A3A /* EventDescriptionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -104,10 +139,13 @@
 		767A78031F91872400F59ECD = {
 			isa = PBXGroup;
 			children = (
+				76E1A9E81F96C2090004FBC9 /* Podfile */,
 				763C8D071F92FA7F00317F2D /* Default-568h@2x.png */,
 				767A780E1F91872400F59ECD /* APO */,
 				767A78231F91872400F59ECD /* APOTests */,
 				767A780D1F91872400F59ECD /* Products */,
+				76E1A9E41F96C1340004FBC9 /* Frameworks */,
+				2C0B26267D57378282F3FC90 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +192,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		76E1A9E41F96C1340004FBC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA74A7887045306C96E3F582 /* libPods-APO.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 767A78291F91872400F59ECD /* Build configuration list for PBXNativeTarget "APO" */;
 			buildPhases = (
+				1CA6D529E75489143E5EF5EB /* [CP] Check Pods Manifest.lock */,
 				767A78081F91872400F59ECD /* Sources */,
 				767A78091F91872400F59ECD /* Frameworks */,
 				767A780A1F91872400F59ECD /* Resources */,
+				456028511CF8A593B212E549 /* [CP] Embed Pods Frameworks */,
+				E40C091CDBFCC2EFF1B21012 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76E1A9E91F96C2090004FBC9 /* Podfile in Resources */,
 				767A781A1F91872400F59ECD /* LaunchScreen.storyboard in Resources */,
 				763C8D081F92FA7F00317F2D /* Default-568h@2x.png in Resources */,
 				767A78171F91872400F59ECD /* Assets.xcassets in Resources */,
@@ -253,18 +303,80 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1CA6D529E75489143E5EF5EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-APO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		456028511CF8A593B212E549 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APO/Pods-APO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E40C091CDBFCC2EFF1B21012 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-APO/Pods-APO-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-APO/Pods-APO-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		767A78081F91872400F59ECD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				763C8D001F92C9C200317F2D /* Event.swift in Sources */,
+				76B766A41F98916800DA9A3A /* SignupsCell.swift in Sources */,
 				767A78121F91872400F59ECD /* HomeController.swift in Sources */,
 				763C8D061F92F6AA00317F2D /* ApiService.swift in Sources */,
 				763C8D031F92CCDD00317F2D /* EventCell.swift in Sources */,
 				767A78331F918A4000F59ECD /* Extensions.swift in Sources */,
+				76B766AA1F98A58A00DA9A3A /* UserCell.swift in Sources */,
 				763C8D0B1F948BAB00317F2D /* EventController.swift in Sources */,
+				76B766A61F98975200DA9A3A /* Signup.swift in Sources */,
 				767A78101F91872400F59ECD /* AppDelegate.swift in Sources */,
+				76E1A9DD1F96A6B90004FBC9 /* EventTimeCell.swift in Sources */,
+				76B766A01F9878BE00DA9A3A /* EventDescriptionController.swift in Sources */,
+				76485E3C1F97EEE5002306AE /* EventHeader.swift in Sources */,
+				76B766A21F98827200DA9A3A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,10 +527,15 @@
 		};
 		767A782A1F91872400F59ECD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70688423FFBF19519B727A94 /* Pods-APO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VSP9P84RKF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = APO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.APO;
@@ -430,10 +547,15 @@
 		};
 		767A782B1F91872400F59ECD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5658E86945A41888DE5F4DC /* Pods-APO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VSP9P84RKF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = APO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.APO;
