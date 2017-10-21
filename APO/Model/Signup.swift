@@ -9,6 +9,6 @@
 import UIKit
 
 class Signup: NSObject {
-    var user: User?
+    var member: Member?
     var eventID: NSNumber?
 }

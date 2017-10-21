@@ -17,7 +17,7 @@ class Event: NSObject {
     var eventEnd: NSDate?
     var eventLoc: String?
     var eventCap: NSNumber?
-    var users: [User]?
+    var members: [Member]?
 }
 
 

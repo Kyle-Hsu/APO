@@ -11,7 +11,7 @@ import UIKit
 class SignupsCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
     private let cellId = "userCellId"
     
-    var users: [User]? {
+    var users: [Member]? {
         didSet {
             signUpsCollectionView.reloadData()
         }
@@ -22,7 +22,7 @@ class SignupsCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
         //let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         let tableView = UITableView()
         tableView.isScrollEnabled = false
-        
+        tableView.showsVerticalScrollIndicator = false
         //collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return tableView
@@ -38,10 +38,12 @@ class SignupsCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath as IndexPath) as! UserCell
         let user = users?[indexPath.item]
         cell.user = user
+        cell.count = indexPath.item as NSNumber
+        cell.isUserInteractionEnabled = false
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 20
+        return 30
     }
     
     let signupLabel: UILabel = {
@@ -58,7 +60,7 @@ class SignupsCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
         
         signUpsCollectionView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
-        addConstraintsWithFormat(format: "V:|[v0(20)][v1]|", views: signupLabel, signUpsCollectionView)
+        addConstraintsWithFormat(format: "V:|[v0(30)]-4-[v1]-16-|", views: signupLabel, signUpsCollectionView)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: signUpsCollectionView)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: signupLabel)
         

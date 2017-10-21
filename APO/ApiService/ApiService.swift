@@ -13,13 +13,12 @@ class ApiService: NSObject {
     static let sharedInstance = ApiService()
     
     func fetchEvents(completion: @escaping ([Event]) -> ()) {
-        let url = NSURL(string: "http://www.apousc.org/getEvents.php")
+        let url = NSURL(string: "http://www.apousc.org/IOS/getEvents.php")
         let task = URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
             if error != nil {
                 print(error as Any)
                 return
             }
-            
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                 
@@ -59,7 +58,7 @@ class ApiService: NSObject {
     }
     
     func fetchSignups(completion: @escaping ([Signup]) -> ()) {
-        let url = NSURL(string: "http://www.apousc.org/getSignups.php")
+        let url = NSURL(string: "http://www.apousc.org/IOS/getSignups.php")
         let task = URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
             if error != nil {
                 print(error as Any)
@@ -72,13 +71,13 @@ class ApiService: NSObject {
                 var signups = [Signup]()
                 
                 for dictionary in json as! [[String: AnyObject]] {
-                    let user = User()
-                    user.fname = dictionary["fname"] as? String
-                    user.lname = dictionary["lname"] as? String
-                    user.username = dictionary["username"] as? String
+                    let member = Member()
+                    member.fname = dictionary["fname"] as? String
+                    member.lname = dictionary["lname"] as? String
+                    member.username = dictionary["username"] as? String
                     
                     let signup = Signup()
-                    signup.user = user;
+                    signup.member = member;
                     signup.eventID = NSNumber(value: Int((dictionary["eventid"] as? String)!)!)
                     signups.append(signup)
                 }
@@ -93,5 +92,46 @@ class ApiService: NSObject {
         task.resume()
     }
     
+    func verifyLogin(username: String, password: String, completion: @escaping ([User]) -> ()) {
+        let parameters = ["username": username, "password": password]
+        
+        guard let url = URL(string: "http://apousc.org/IOS/verifyLogin.php") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        request.httpBody = httpBody
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                
+                var users = [User]()
+                for dictionary in json as! [[String: AnyObject]] {
+                    if let fname = dictionary["fname"] as? String {
+                        let user = User()
+                        user.fname = fname
+                        user.lname = dictionary["lname"] as? String
+                        user.username = dictionary["username"] as? String
+                        users.append(user)
+                    }
+                }
+                
+                DispatchQueue.main.async(execute: {
+                    completion(users)
+                })
+            } catch let jsonError {
+                print(jsonError)
+            }
+            
+            
+        }.resume()
+    }
     
 }

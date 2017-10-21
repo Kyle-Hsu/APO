@@ -18,21 +18,36 @@ class UserCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    var user: User? {
+    var user: Member? {
         didSet {
             nameLabel.text = (user?.fname)! + " " + (user?.lname)!
         }
     }
-    
     
     let nameLabel: UILabel = {
         let label = UILabel()
         return label
     }()
     
+    var count: NSNumber? {
+        didSet {
+            if let number = count {
+                numberLabel.text = String(describing: (Int(truncating: number) + 1))
+            }
+        }
+    }
+    
+    let numberLabel: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        return label
+    }()
+    
     func setupViews() {
         addSubview(nameLabel)
-        addConstraintsWithFormat(format: "H:|[v0]|", views: nameLabel)
+        addSubview(numberLabel)
+        addConstraintsWithFormat(format: "H:|[v0(30)][v1]|", views: numberLabel,nameLabel)
+        addConstraintsWithFormat(format: "V:|[v0]|", views: numberLabel)
         addConstraintsWithFormat(format: "V:|[v0]|", views: nameLabel)
     }
 }

@@ -19,9 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let layout = UICollectionViewFlowLayout()
-        let homeController = HomeController(collectionViewLayout: layout)
-        window?.rootViewController = UINavigationController(rootViewController: homeController)
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+        
+        window?.rootViewController = MainNavigationController()
+        
+//        let layout = UICollectionViewFlowLayout()
+//        let homeController = HomeController(collectionViewLayout: layout)
+//        window?.rootViewController = UINavigationController(rootViewController: homeController)
+        
+        
+//        let loginController = LoginController()
+//        window?.rootViewController = UINavigationController(rootViewController: loginController)
         
         return true
     }
