@@ -30,7 +30,11 @@ class ApiService: NSObject {
                     let eventStart = dictionary["start"] as? String
                     let eventEnd = dictionary["end"] as? String
                     event.eventID = NSNumber(value: Int((dictionary["ID"] as? String)!)!)
-                    event.eventCap = NSNumber(value: Int((dictionary["max"] as? String)!)!)
+                    
+                    if let cap = dictionary["max"] {
+                        event.eventCap = NSNumber(value: Int(cap as! String)!)
+                    }
+                    
                     let dateFormatter = DateFormatter()
                     TimeZone.ReferenceType.default = TimeZone(abbreviation: "UTC")!
                     dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"

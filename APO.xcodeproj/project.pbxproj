@@ -30,6 +30,7 @@
 		76B766A41F98916800DA9A3A /* SignupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A31F98916800DA9A3A /* SignupsCell.swift */; };
 		76B766A61F98975200DA9A3A /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A51F98975200DA9A3A /* Signup.swift */; };
 		76B766AA1F98A58A00DA9A3A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A91F98A58A00DA9A3A /* UserCell.swift */; };
+		76CB21BE1F9D42DB0050DC72 /* WaitlistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CB21BD1F9D42DB0050DC72 /* WaitlistCell.swift */; };
 		76E1A9DD1F96A6B90004FBC9 /* EventTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E1A9DC1F96A6B90004FBC9 /* EventTimeCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		76B766A31F98916800DA9A3A /* SignupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupsCell.swift; sourceTree = "<group>"; };
 		76B766A51F98975200DA9A3A /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		76B766A91F98A58A00DA9A3A /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		76CB21BD1F9D42DB0050DC72 /* WaitlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitlistCell.swift; sourceTree = "<group>"; };
 		76E1A9DC1F96A6B90004FBC9 /* EventTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				76B766A91F98A58A00DA9A3A /* UserCell.swift */,
 				7623FE281F99D0B000406D38 /* LoginScreen.swift */,
 				763DB2921F9B4AE70005C3E2 /* ActionBar.swift */,
+				76CB21BD1F9D42DB0050DC72 /* WaitlistCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				767A78331F918A4000F59ECD /* Extensions.swift in Sources */,
 				763DB2931F9B4AE70005C3E2 /* ActionBar.swift in Sources */,
 				768F26C91F99E97E0014F021 /* MainNavigationController.swift in Sources */,
+				76CB21BE1F9D42DB0050DC72 /* WaitlistCell.swift in Sources */,
 				76B766AA1F98A58A00DA9A3A /* UserCell.swift in Sources */,
 				763C8D0B1F948BAB00317F2D /* EventController.swift in Sources */,
 				76B766A61F98975200DA9A3A /* Signup.swift in Sources */,

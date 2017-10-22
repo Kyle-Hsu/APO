@@ -10,22 +10,6 @@ import UIKit
 
 class EventDetailHeader: BaseCell {
     var navigationController: UINavigationController?
-    
-    weak var labelHeightConstraint: NSLayoutConstraint!
-    var isExpanded:Bool = false
-    {
-        didSet
-        {
-            if !isExpanded {
-                self.labelHeightConstraint.constant = 0.0
-                
-            } else {
-                self.labelHeightConstraint.constant = 128.0
-            }
-        }
-    }
-    
-    
     var event: Event? {
         didSet {
             if let eventDesc = event?.eventDesc {

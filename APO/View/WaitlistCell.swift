@@ -1,4 +1,13 @@
 //
+//  WaitlistCell.swift
+//  APO
+//
+//  Created by Kyle Hsu on 10/22/17.
+//  Copyright © 2017 Kyle. All rights reserved.
+//
+
+import UIKit
+//
 //  SignupCell.swift
 //  APO
 //
@@ -8,16 +17,18 @@
 
 import UIKit
 
-class SignupsCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
+class WaitlistCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
     private let cellId = "userCellId"
+    
+    var count: Int?
     
     var users: [Member]? {
         didSet {
-            signUpsCollectionView.reloadData()
+            waitlistCollectionView.reloadData()
         }
     }
     
-    let signUpsCollectionView: UITableView = {
+    let waitlistCollectionView: UITableView = {
         //let layout = UICollectionViewFlowLayout()0
         //let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         let tableView = UITableView()
@@ -38,7 +49,7 @@ class SignupsCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath as IndexPath) as! UserCell
         let user = users?[indexPath.item]
         cell.user = user
-        cell.count = indexPath.item as NSNumber
+        cell.count = (indexPath.item + count!) as NSNumber
         cell.isUserInteractionEnabled = false
         return cell
     }
@@ -46,24 +57,25 @@ class SignupsCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
         return 30
     }
     
-    let signupLabel: UILabel = {
+    let waitlistLabel: UILabel = {
         let label = UILabel()
-        label.text = "Signups"
+        label.text = "Wait List"
         label.textAlignment = .center
         return label
     }()
     
     override func setupViews() {
-        addSubview(signUpsCollectionView)
-        addSubview(signupLabel)
-        signUpsCollectionView.dataSource = self
-        signUpsCollectionView.delegate = self
+        addSubview(waitlistCollectionView)
+        addSubview(waitlistLabel)
+        waitlistCollectionView.dataSource = self
+        waitlistCollectionView.delegate = self
         
-        signUpsCollectionView.register(UserCell.self, forCellReuseIdentifier: cellId)
+        waitlistCollectionView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
-        addConstraintsWithFormat(format: "V:|-8-[v0(30)]-4-[v1]-16-|", views: signupLabel, signUpsCollectionView)
-        addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: signUpsCollectionView)
-        addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: signupLabel)
+        addConstraintsWithFormat(format: "V:|[v0(30)]-4-[v1]-16-|", views: waitlistLabel, waitlistCollectionView)
+        addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: waitlistCollectionView)
+        addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: waitlistLabel)
         
     }
 }
+
