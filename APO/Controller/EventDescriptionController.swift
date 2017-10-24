@@ -44,8 +44,8 @@ class EventDescriptionController: UICollectionViewController, UICollectionViewDe
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
         cell.addSubview(textView)
-        cell.addConstraintsWithFormat(format: "H:|[v0]|", views: textView)
-        cell.addConstraintsWithFormat(format: "V:|[v0]", views: textView)
+        cell.addConstraintsWithFormat(format: "H:|-8-[v0]-8-|", views: textView)
+        cell.addConstraintsWithFormat(format: "V:|-8-[v0]", views: textView)
         return cell
     }
     

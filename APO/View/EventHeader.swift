@@ -75,6 +75,6 @@ class EventDetailHeader: BaseCell {
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: dateLabel)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: timeLabel)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: capLabel)
-        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: descLabel)
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: descLabel)
     }
 }

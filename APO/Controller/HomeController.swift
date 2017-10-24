@@ -22,7 +22,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleSignOut))
         navigationItem.leftBarButtonItem?.setTitlePositionAdjustment(.init(horizontal: -10, vertical: 0), for: UIBarMetrics.default)
         fetchEvents()
-        fetchSignups()
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
@@ -49,26 +48,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    var signups: [Signup]?
-    
-    func fetchSignups() {
-        ApiService.sharedInstance.fetchSignups { (signups: [Signup]) in
-            self.signups = signups
-            self.collectionView?.reloadData()
-        }
-    }
-    
     func showControllerForEvent(event: Event) {
         let layout = UICollectionViewFlowLayout()
         let EventViewController:EventController = EventController(collectionViewLayout: layout)
-        
-        var members: [Member] = []
-        for index in 0...(signups?.count)!-1 {
-            if signups![index].eventID == event.eventID {
-                members.append((signups?[index].member)!)
-            }
-        }
-        event.members = members
         EventViewController.event = event
         navigationController?.pushViewController(EventViewController, animated: true)
         

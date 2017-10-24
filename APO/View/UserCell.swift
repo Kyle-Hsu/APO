@@ -46,7 +46,7 @@ class UserCell: UITableViewCell {
     func setupViews() {
         addSubview(nameLabel)
         addSubview(numberLabel)
-        addConstraintsWithFormat(format: "H:|[v0(30)][v1]|", views: numberLabel,nameLabel)
+        addConstraintsWithFormat(format: "H:|-16-[v0(30)][v1]-16-|", views: numberLabel,nameLabel)
         addConstraintsWithFormat(format: "V:|[v0]|", views: numberLabel)
         addConstraintsWithFormat(format: "V:|[v0]|", views: nameLabel)
     }

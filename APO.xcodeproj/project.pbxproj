@@ -14,7 +14,6 @@
 		763C8D061F92F6AA00317F2D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D051F92F6AA00317F2D /* ApiService.swift */; };
 		763C8D081F92FA7F00317F2D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 763C8D071F92FA7F00317F2D /* Default-568h@2x.png */; };
 		763C8D0B1F948BAB00317F2D /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D0A1F948BAB00317F2D /* EventController.swift */; };
-		763DB2931F9B4AE70005C3E2 /* ActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763DB2921F9B4AE70005C3E2 /* ActionBar.swift */; };
 		76485E3C1F97EEE5002306AE /* EventHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76485E3B1F97EEE5002306AE /* EventHeader.swift */; };
 		76786F761F9ACFE5000487F7 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76786F751F9ACFE5000487F7 /* Member.swift */; };
 		767A78101F91872400F59ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767A780F1F91872400F59ECD /* AppDelegate.swift */; };
@@ -25,6 +24,8 @@
 		767A78251F91872400F59ECD /* APOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767A78241F91872400F59ECD /* APOTests.swift */; };
 		767A78331F918A4000F59ECD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767A78321F918A4000F59ECD /* Extensions.swift */; };
 		768F26C91F99E97E0014F021 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F26C81F99E97E0014F021 /* MainNavigationController.swift */; };
+		7695ACC01F9DBE5F0082C8B9 /* ActionLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695ACBF1F9DBE5F0082C8B9 /* ActionLauncher.swift */; };
+		7695ACC21F9DBEAE0082C8B9 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695ACC11F9DBEAE0082C8B9 /* ActionCell.swift */; };
 		76B766A01F9878BE00DA9A3A /* EventDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7669F1F9878BE00DA9A3A /* EventDescriptionController.swift */; };
 		76B766A21F98827200DA9A3A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A11F98827200DA9A3A /* User.swift */; };
 		76B766A41F98916800DA9A3A /* SignupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B766A31F98916800DA9A3A /* SignupsCell.swift */; };
@@ -53,7 +54,6 @@
 		763C8D071F92FA7F00317F2D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		763C8D0A1F948BAB00317F2D /* EventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		763DB2911F9AF0020005C3E2 /* APOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		763DB2921F9B4AE70005C3E2 /* ActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBar.swift; sourceTree = "<group>"; };
 		76485E3B1F97EEE5002306AE /* EventHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeader.swift; sourceTree = "<group>"; };
 		76786F731F9AC01F000487F7 /* APO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76786F751F9ACFE5000487F7 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
@@ -67,6 +67,8 @@
 		767A78261F91872400F59ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		767A78321F918A4000F59ECD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		768F26C81F99E97E0014F021 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		7695ACBF1F9DBE5F0082C8B9 /* ActionLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLauncher.swift; sourceTree = "<group>"; };
+		7695ACC11F9DBEAE0082C8B9 /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 		76B7669F1F9878BE00DA9A3A /* EventDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDescriptionController.swift; sourceTree = "<group>"; };
 		76B766A11F98827200DA9A3A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		76B766A31F98916800DA9A3A /* SignupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupsCell.swift; sourceTree = "<group>"; };
@@ -114,8 +116,8 @@
 				76B766A31F98916800DA9A3A /* SignupsCell.swift */,
 				76B766A91F98A58A00DA9A3A /* UserCell.swift */,
 				7623FE281F99D0B000406D38 /* LoginScreen.swift */,
-				763DB2921F9B4AE70005C3E2 /* ActionBar.swift */,
 				76CB21BD1F9D42DB0050DC72 /* WaitlistCell.swift */,
+				7695ACC11F9DBEAE0082C8B9 /* ActionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,6 +138,7 @@
 				76B7669F1F9878BE00DA9A3A /* EventDescriptionController.swift */,
 				7623FE261F99A02500406D38 /* LoginController.swift */,
 				768F26C81F99E97E0014F021 /* MainNavigationController.swift */,
+				7695ACBF1F9DBE5F0082C8B9 /* ActionLauncher.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -336,9 +339,10 @@
 				763C8D061F92F6AA00317F2D /* ApiService.swift in Sources */,
 				7623FE271F99A02500406D38 /* LoginController.swift in Sources */,
 				7623FE291F99D0B000406D38 /* LoginScreen.swift in Sources */,
+				7695ACC21F9DBEAE0082C8B9 /* ActionCell.swift in Sources */,
 				763C8D031F92CCDD00317F2D /* EventCell.swift in Sources */,
+				7695ACC01F9DBE5F0082C8B9 /* ActionLauncher.swift in Sources */,
 				767A78331F918A4000F59ECD /* Extensions.swift in Sources */,
-				763DB2931F9B4AE70005C3E2 /* ActionBar.swift in Sources */,
 				768F26C91F99E97E0014F021 /* MainNavigationController.swift in Sources */,
 				76CB21BE1F9D42DB0050DC72 /* WaitlistCell.swift in Sources */,
 				76B766AA1F98A58A00DA9A3A /* UserCell.swift in Sources */,

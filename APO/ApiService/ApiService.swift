@@ -61,9 +61,18 @@ class ApiService: NSObject {
         task.resume()
     }
     
-    func fetchSignups(completion: @escaping ([Signup]) -> ()) {
-        let url = NSURL(string: "http://www.apousc.org/IOS/getSignups.php")
-        let task = URLSession.shared.dataTask(with: url! as URL, completionHandler: { (data, response, error) in
+    func fetchSignups(eventId: String, completion: @escaping ([Member]) -> ()) {
+        let parameters = ["eventId": eventId]
+        
+        guard let url = URL(string: "http://apousc.org/IOS/getSignups.php") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        request.httpBody = httpBody
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
             if error != nil {
                 print(error as Any)
                 return
@@ -71,29 +80,26 @@ class ApiService: NSObject {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                
-                var signups = [Signup]()
-                
+                var members = [Member]()
                 for dictionary in json as! [[String: AnyObject]] {
-                    let member = Member()
-                    member.fname = dictionary["fname"] as? String
-                    member.lname = dictionary["lname"] as? String
-                    member.username = dictionary["username"] as? String
-                    
-                    let signup = Signup()
-                    signup.member = member;
-                    signup.eventID = NSNumber(value: Int((dictionary["eventid"] as? String)!)!)
-                    signups.append(signup)
+                    if let fname = dictionary["fname"] as? String {
+                        let member = Member()
+                        member.fname = fname
+                        member.lname = dictionary["lname"] as? String
+                        member.username = dictionary["username"] as? String
+                        members.append(member)
+                    }
                 }
+                
                 DispatchQueue.main.async(execute: {
-                    completion(signups)
+                    completion(members)
                 })
             } catch let jsonError {
                 print(jsonError)
             }
             
-        })
-        task.resume()
+            
+            }.resume()
     }
     
     func verifyLogin(username: String, password: String, completion: @escaping ([User]) -> ()) {
@@ -136,6 +142,70 @@ class ApiService: NSObject {
             
             
         }.resume()
+    }
+    
+    func requestSignup(username: String, eventId: String, completion: @escaping ()->()) {
+        let parameters = ["username": username, "eventid": eventId]
+        
+        let url = URL(string: "http://www.apousc.org/IOS/addEventSignup.php")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        request.httpBody = httpBody
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            
+            DispatchQueue.main.async(execute: {
+                completion()
+            })
+            
+
+        }
+        task.resume()
+    }
+    
+    func removeSignup(username: String, eventId: String, completion: @escaping ()->()) {
+        let parameters = ["username": username, "eventid": eventId]
+        
+        let url = URL(string: "http://www.apousc.org/IOS/removeEventSignup.php")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
+        request.httpBody = httpBody
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(String(describing: response))")
+            }
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            
+            DispatchQueue.main.async(execute: {
+                completion()
+            })
+            
+            
+        }
+        task.resume()
     }
     
 }
