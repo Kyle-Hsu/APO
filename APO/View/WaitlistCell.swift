@@ -48,7 +48,7 @@ class WaitlistCell: BaseCell, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath as IndexPath) as! UserCell
         let user = users?[indexPath.item]
-        cell.user = user
+        cell.member = user
         cell.count = (indexPath.item + count!) as NSNumber
         cell.isUserInteractionEnabled = false
         return cell

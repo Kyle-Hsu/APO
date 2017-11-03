@@ -10,6 +10,7 @@ import UIKit
 
 class EventController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    let backgroundColor = UIColor.white
     private let eventTimeCellId = "eventTimeCellId"
     private let signUpsCellId = "signUpsCellId"
     private let waitlistCellId = "waitlistCellId"
@@ -31,10 +32,11 @@ class EventController: UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = UIColor.white
-        collectionView?.showsVerticalScrollIndicator = true
-        fetchSignUps()
+        collectionView?.backgroundColor = backgroundColor
+        collectionView?.showsVerticalScrollIndicator = false
         
+        fetchSignUps()
+
         collectionView?.register(EventDetailHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView?.register(EventTimeCell.self, forCellWithReuseIdentifier: eventTimeCellId)
         collectionView?.register(SignupsCell.self, forCellWithReuseIdentifier: signUpsCellId)
@@ -42,12 +44,11 @@ class EventController: UICollectionViewController, UICollectionViewDelegateFlowL
 
         setupNavBarButtons()
         collectionView?.reloadData()
-        
-        
-        
     }
+    
 
-    func setupNavBarButtons() {
+
+    private func setupNavBarButtons() {
         let moreImage = UIImage(named: "signup_icon")?.withRenderingMode(.alwaysTemplate)
 
         let moreButton = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(handleMore))
@@ -82,7 +83,7 @@ class EventController: UICollectionViewController, UICollectionViewDelegateFlowL
         if let numMembers = event?.members?.count {
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: signUpsCellId, for: indexPath) as! SignupsCell
-
+                cell.backgroundColor = backgroundColor
                 var signups: [Member] = []
 
                 if(((event?.eventCap?.intValue)! == 0) || (numMembers <= (event?.eventCap?.intValue)!)) {
@@ -140,7 +141,7 @@ class EventController: UICollectionViewController, UICollectionViewDelegateFlowL
         header.event = event
         header.navigationController = self.navigationController
         
-        header.backgroundColor = UIColor.white
+        header.backgroundColor = backgroundColor
         return header
     }
 

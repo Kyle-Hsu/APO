@@ -9,12 +9,19 @@
 import UIKit
 
 class EventDetailHeader: BaseCell {
+    
     var navigationController: UINavigationController?
     var event: Event? {
         didSet {
             if let eventDesc = event?.eventDesc {
                 descLabel.text = eventDesc
             }
+            if let eventLoc = event?.eventLoc {
+                if eventLoc != "" {
+                    locLabel.text = "Location: " + eventLoc
+                }
+            }
+            
 
             let formatter = DateFormatter()
             formatter.dateFormat = "h:mm a"
@@ -56,11 +63,21 @@ class EventDetailHeader: BaseCell {
         return label
     }()
     
+    let locLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    
     let capLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         return label
     }()
+    
+    var height = 60;
     
     override func setupViews() {
         super.setupViews()
@@ -69,12 +86,15 @@ class EventDetailHeader: BaseCell {
         addSubview(timeLabel)
         addSubview(dateLabel)
         addSubview(capLabel)
-        
+        addSubview(locLabel)
         descLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showEventDescriptionController)))
-        addConstraintsWithFormat(format: "V:|[v0][v1(20)][v2(20)][v3(20)]|", views: descLabel, dateLabel, timeLabel,capLabel)
+        
+        
+        addConstraintsWithFormat(format: "V:|[v0][v1(20)][v2(20)][v3(" + String(describing:height) + ")][v4(20)]|", views: descLabel, dateLabel, timeLabel,locLabel, capLabel)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: dateLabel)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: timeLabel)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: capLabel)
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: descLabel)
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: locLabel)
     }
 }

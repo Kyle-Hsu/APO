@@ -27,6 +27,7 @@ class ApiService: NSObject {
                 for dictionary in json as! [[String: AnyObject]] {
                     let event = Event()
                     event.eventName = dictionary["name"] as? String
+                    event.eventLoc  = dictionary["location"] as? String
                     let eventStart = dictionary["start"] as? String
                     let eventEnd = dictionary["end"] as? String
                     event.eventID = NSNumber(value: Int((dictionary["ID"] as? String)!)!)
@@ -155,8 +156,8 @@ class ApiService: NSObject {
         request.httpBody = httpBody
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(String(describing: error))")
+            if error != nil {
+                print(error as Any)
                 return
             }
             
@@ -164,8 +165,7 @@ class ApiService: NSObject {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
             }
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
+//            let responseString = String(data: data, encoding: .utf8)
             
             DispatchQueue.main.async(execute: {
                 completion()
@@ -187,8 +187,8 @@ class ApiService: NSObject {
         request.httpBody = httpBody
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(String(describing: error))")
+            if error != nil {
+                print(error as Any)
                 return
             }
             
@@ -196,8 +196,7 @@ class ApiService: NSObject {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
             }
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
+//            let responseString = String(data: data, encoding: .utf8)
             
             DispatchQueue.main.async(execute: {
                 completion()

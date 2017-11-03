@@ -25,12 +25,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
-
         collectionView?.backgroundColor = UIColor(white: 1, alpha: 0.5)
         collectionView?.register(EventCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView?.reloadData()
     }
-
     
     @objc func handleSignOut() {
         UserDefaults.standard.set(false, forKey: "isLoggedIn")

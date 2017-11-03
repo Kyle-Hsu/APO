@@ -18,12 +18,18 @@ class MainNavigationController: UINavigationController {
             let layout = UICollectionViewFlowLayout()
             let homeController = HomeController(collectionViewLayout: layout)
             let user = User()
-            user.fname = UserDefaults.standard.string(forKey: "fname")
-            user.lname = UserDefaults.standard.string(forKey: "lname")
-            user.username = UserDefaults.standard.string(forKey: "username")
-            homeController.user = user
-            
-            viewControllers = [homeController]
+            if let fname = UserDefaults.standard.string(forKey: "fname"),
+                let lname = UserDefaults.standard.string(forKey: "lname"),
+                let username = UserDefaults.standard.string(forKey: "username"){
+                user.fname = fname
+                user.lname = lname
+                user.username = username
+                homeController.user = user
+                
+                viewControllers = [homeController]
+            } else {
+                perform(#selector(showLoginController), with: nil, afterDelay: 0.01)
+            }
         } else {
             perform(#selector(showLoginController), with: nil, afterDelay: 0.01)
         }

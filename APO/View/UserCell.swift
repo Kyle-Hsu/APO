@@ -18,9 +18,9 @@ class UserCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    var user: Member? {
+    var member: Member? {
         didSet {
-            nameLabel.text = (user?.fname)! + " " + (user?.lname)!
+            nameLabel.text = (member?.fname)! + " " + (member?.lname)!
         }
     }
     

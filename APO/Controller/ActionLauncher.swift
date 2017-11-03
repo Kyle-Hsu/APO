@@ -122,16 +122,28 @@ class ActionLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDele
                                                         completion: {
                                                             self.eventController?.fetchSignUps()
                 })
-                print(self.eventController?.event?.members?.count) 
             }
             
         } else if(indexPath.item == 1) {
-            if let username = UserDefaults.standard.string(forKey: "username"){
-                ApiService.sharedInstance.removeSignup(username: username,
-                                                        eventId: (self.eventController?.event?.eventID?.stringValue)!,
-                                                        completion: {
-                                                            self.eventController?.fetchSignUps()
-                })
+            let date = Date()
+            let timezoneDate = Calendar.current.date(byAdding: .hour, value: -7, to: date)
+            if let eventDate = self.eventController?.event?.eventStart {
+                let cutoffDate = Calendar.current.date(byAdding: .day, value: -1, to: eventDate as Date)
+        
+                if(cutoffDate! < timezoneDate!) {
+                    let alert = UIAlertController(title: nil, message: "It is too late to unsign up.\n Please email the respective officer!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                    self.eventController?.present(alert, animated: true, completion: nil)
+                } else {
+                    if let username = UserDefaults.standard.string(forKey: "username"){
+                        ApiService.sharedInstance.removeSignup(username: username,
+                                                               eventId: (self.eventController?.event?.eventID?.stringValue)!,
+                                                               completion: {
+                                                                self.eventController?.fetchSignUps()
+                        })
+                    }
+                    
+                }
             }
         }
         
