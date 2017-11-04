@@ -40,6 +40,12 @@ class LoginController: UIViewController {
                 UserDefaults.standard.set(users[0].fname, forKey: "fname")
                 UserDefaults.standard.set(users[0].lname, forKey: "lname")
                 UserDefaults.standard.set(users[0].username, forKey: "username")
+                if let fam = users[0].family {
+                    UserDefaults.standard.set(fam, forKey: "family")
+                } else {
+                    UserDefaults.standard.set(nil, forKey: "family")
+                }
+                
                 UserDefaults.standard.synchronize()
                 self.dismissKeyboard()
                 self.dismiss(animated: true, completion: nil)

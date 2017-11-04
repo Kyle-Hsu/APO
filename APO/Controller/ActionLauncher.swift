@@ -81,7 +81,6 @@ class ActionLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDele
             }
         }) { (completed: Bool) in
             if action.name != .Cancel {
-                print(action.name)
                 
             }
         }
@@ -110,44 +109,80 @@ class ActionLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        
+
         let action = self.actions[indexPath.item]
         handleDismiss(action: action)
         
         if(indexPath.item == 0) {
-            if let username = UserDefaults.standard.string(forKey: "username"){
-                ApiService.sharedInstance.requestSignup(username: username,
-                                                        eventId: (self.eventController?.event?.eventID?.stringValue)!,
-                                                        completion: {
-                                                            self.eventController?.fetchSignUps()
-                })
-            }
+            handleSignup()
             
         } else if(indexPath.item == 1) {
-            let date = Date()
-            let timezoneDate = Calendar.current.date(byAdding: .hour, value: -7, to: date)
-            if let eventDate = self.eventController?.event?.eventStart {
-                let cutoffDate = Calendar.current.date(byAdding: .day, value: -1, to: eventDate as Date)
-        
-                if(cutoffDate! < timezoneDate!) {
-                    let alert = UIAlertController(title: nil, message: "It is too late to unsign up.\n Please email the respective officer!", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-                    self.eventController?.present(alert, animated: true, completion: nil)
-                } else {
-                    if let username = UserDefaults.standard.string(forKey: "username"){
-                        ApiService.sharedInstance.removeSignup(username: username,
-                                                               eventId: (self.eventController?.event?.eventID?.stringValue)!,
-                                                               completion: {
-                                                                self.eventController?.fetchSignUps()
-                        })
-                    }
-                    
-                }
-            }
+            handleRemove()
         }
         
         
+    }
+    
+
+    private func handleSignup() {
+        let date = Date()
+        let timezoneDate = Calendar.current.date(byAdding: .hour, value: -7, to: date)
+        if let eventDate = self.eventController?.event?.eventStart {
+            let cutoffDate = Calendar.current.date(byAdding: .day, value: 0, to: eventDate as Date)
+            if(cutoffDate! < timezoneDate!) {
+                let alert = UIAlertController(title: nil, message: "The event already started!\n Please contact the respective officer!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                self.eventController?.present(alert, animated: true, completion: nil)
+            } else {
+                if (eventController?.event?.eventType == 10 && UserDefaults.standard.string(forKey: "family") != "0") {
+                    let alert = UIAlertController(title: nil, message: "This is an Alpha Fam event, you are not an Alpha!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                    self.eventController?.present(alert, animated: true, completion: nil)
+                    
+                } else if (eventController?.event?.eventType == 11 && UserDefaults.standard.string(forKey: "family") != "1") {
+                    let alert = UIAlertController(title: nil, message: "This is a Phi Fam event, you are not a Phi!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                    self.eventController?.present(alert, animated: true, completion: nil)
+                    
+                } else if (eventController?.event?.eventType == 12 && UserDefaults.standard.string(forKey: "family") != "2") {
+                    let alert = UIAlertController(title: nil, message: "This is an Omega Fam event, you are not an Omega!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                    self.eventController?.present(alert, animated: true, completion: nil)
+                    
+                } else {
+                    if let username = UserDefaults.standard.string(forKey: "username"){
+                        ApiService.sharedInstance.requestSignup(username: username,
+                                                                eventId: (self.eventController?.event?.eventID?.stringValue)!,
+                                                                completion: {
+                                                                    self.eventController?.fetchSignUps()
+                        })
+                    }
+                }
+            }
+        }
+    }
+    
+    private func handleRemove() {
+        let date = Date()
+        let timezoneDate = Calendar.current.date(byAdding: .hour, value: -7, to: date)
+        if let eventDate = self.eventController?.event?.eventStart {
+            let cutoffDate = Calendar.current.date(byAdding: .day, value: -1, to: eventDate as Date)
+            
+            if(cutoffDate! < timezoneDate!) {
+                let alert = UIAlertController(title: nil, message: "It is too late to unsign up.\n Please email the respective officer!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                self.eventController?.present(alert, animated: true, completion: nil)
+            } else {
+                if let username = UserDefaults.standard.string(forKey: "username"){
+                    ApiService.sharedInstance.removeSignup(username: username,
+                                                           eventId: (self.eventController?.event?.eventID?.stringValue)!,
+                                                           completion: {
+                                                            self.eventController?.fetchSignUps()
+                    })
+                }
+                
+            }
+        }
     }
     
     override init() {

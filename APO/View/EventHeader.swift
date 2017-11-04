@@ -25,9 +25,9 @@ class EventDetailHeader: BaseCell {
 
             let formatter = DateFormatter()
             formatter.dateFormat = "h:mm a"
-            timeLabel.text = " " + formatter.string(from: event?.eventStart as! Date) + " - " + formatter.string(from: event?.eventEnd as! Date)
+            timeLabel.text = " " + formatter.string(from: (event?.eventStart)! as Date) + " - " + formatter.string(from: (event?.eventEnd)! as Date)
             formatter.dateFormat = "EEEE, MMMM dd"
-            dateLabel.text = formatter.string(from: event?.eventStart as! Date)
+            dateLabel.text = formatter.string(from: (event?.eventStart)! as Date)
             
             if let number = event?.eventCap {
                 if Int(truncating: number) > 0 {

@@ -12,23 +12,46 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var user: User?
     
+    private let refreshControl = UIRefreshControl()
+    private let activity = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setupNavBar()
+        fetchEvents()
+        
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        
+        if #available(iOS 10.0, *) {
+            collectionView?.refreshControl = refreshControl
+        } else {
+            collectionView?.addSubview(refreshControl)
+        }
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Events ...")
+        collectionView?.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        collectionView?.register(EventCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView?.reloadData()
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        // Fetch Data
+        fetchEvents()
+    }
+    
+    
+    private func setupNavBar()
+    {
         if let name = user?.fname {
             navigationItem.title = "Welcome, " + name + "!"
         }
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleSignOut))
         navigationItem.leftBarButtonItem?.setTitlePositionAdjustment(.init(horizontal: -10, vertical: 0), for: UIBarMetrics.default)
-        fetchEvents()
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        
-        collectionView?.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        collectionView?.register(EventCell.self, forCellWithReuseIdentifier: "cellId")
-        collectionView?.reloadData()
     }
+    
     
     @objc func handleSignOut() {
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
@@ -43,6 +66,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         ApiService.sharedInstance.fetchEvents { (events: [Event]) in
             self.events = events
             self.collectionView?.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     

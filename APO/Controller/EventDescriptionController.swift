@@ -26,8 +26,6 @@ class EventDescriptionController: UICollectionViewController, UICollectionViewDe
     func lines(label: UILabel) -> Int {
         let textSize = CGSize(width: label.frame.size.width, height: CGFloat(Float.infinity))
         let rHeight = lroundf(Float(label.sizeThatFits(textSize).height))
-//        let charSize = lroundf(Float(label.font.lineHeight))
-//        let lineCount = rHeight/charSize
         return rHeight
     }
     override func viewDidLoad() {

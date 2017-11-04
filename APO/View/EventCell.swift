@@ -15,10 +15,10 @@ class EventCell: BaseCell {
             let formatter = DateFormatter()
 
             formatter.dateFormat = "h:mm a"
-            startLabel.text = " " + formatter.string(from: event?.eventStart as! Date)
-            endLabel.text = " " + formatter.string(from: event?.eventEnd as! Date)
+            startLabel.text = " " + formatter.string(from: (event?.eventStart)! as Date)
+            endLabel.text = " " + formatter.string(from: (event?.eventEnd)! as Date)
             formatter.dateFormat = "EEE \n MM/dd"
-            dateLabel.text = formatter.string(from: event?.eventStart as! Date)
+            dateLabel.text = formatter.string(from: (event?.eventStart)! as Date)
         }
     }
     

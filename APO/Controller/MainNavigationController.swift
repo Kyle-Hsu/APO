@@ -24,6 +24,11 @@ class MainNavigationController: UINavigationController {
                 user.fname = fname
                 user.lname = lname
                 user.username = username
+                
+                if let fam = UserDefaults.standard.string(forKey: "family") {
+                    user.family = Int(fam)! as NSNumber;
+                }
+                
                 homeController.user = user
                 
                 viewControllers = [homeController]

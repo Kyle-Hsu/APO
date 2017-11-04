@@ -12,5 +12,5 @@ class User: NSCoder{
     var fname: String?
     var lname: String?
     var username: String?
-    var family: String?
+    var family: NSNumber?
 }

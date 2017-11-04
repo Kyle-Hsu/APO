@@ -28,14 +28,20 @@ class ApiService: NSObject {
                     let event = Event()
                     event.eventName = dictionary["name"] as? String
                     event.eventLoc  = dictionary["location"] as? String
-                    let eventStart = dictionary["start"] as? String
-                    let eventEnd = dictionary["end"] as? String
                     event.eventID = NSNumber(value: Int((dictionary["ID"] as? String)!)!)
                     
                     if let cap = dictionary["max"] {
                         event.eventCap = NSNumber(value: Int(cap as! String)!)
                     }
+
+                    if let type = dictionary["type"] {
+                        event.eventType = NSNumber(value: Int(type as! String)!)
+                    }
+
                     
+                    let eventStart = dictionary["start"] as? String
+                    let eventEnd = dictionary["end"] as? String
+            
                     let dateFormatter = DateFormatter()
                     TimeZone.ReferenceType.default = TimeZone(abbreviation: "UTC")!
                     dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
@@ -130,6 +136,11 @@ class ApiService: NSObject {
                         user.fname = fname
                         user.lname = dictionary["lname"] as? String
                         user.username = dictionary["username"] as? String
+                        
+                        if let fam = dictionary["family"] {
+                            user.family = NSNumber(value: Int(fam as! String)!)
+                        }
+                        
                         users.append(user)
                     }
                 }
