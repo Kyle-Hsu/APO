@@ -90,7 +90,7 @@ class EventDetailHeader: BaseCell {
         descLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showEventDescriptionController)))
         
         
-        addConstraintsWithFormat(format: "V:|[v0][v1(20)][v2(20)][v3(" + String(describing:height) + ")][v4(20)]|", views: descLabel, dateLabel, timeLabel,locLabel, capLabel)
+        addConstraintsWithFormat(format: "V:|[v0][v1(20)][v2(15)][v3(" + String(describing:height) + ")][v4(20)]|", views: descLabel, dateLabel, timeLabel,locLabel, capLabel)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: dateLabel)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: timeLabel)
         addConstraintsWithFormat(format: "H:|-2-[v0]-2-|", views: capLabel)

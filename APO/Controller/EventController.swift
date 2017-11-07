@@ -99,9 +99,7 @@ class EventController: UICollectionViewController, UICollectionViewDelegateFlowL
                     cell.users = signups
                     return cell
                 }
-            }
-            else
-            {
+            } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: waitlistCellId, for: indexPath) as! WaitlistCell
                 var waitlist: [Member] = []
                 for index in (event?.eventCap?.intValue)! ... numMembers-1 {

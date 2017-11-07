@@ -20,4 +20,3 @@ class Event: NSObject {
     var members: [Member]?
 }
 
-

@@ -31,11 +31,17 @@ class LoginController: UIViewController {
             self.users = users
             if users.count != 0 {
                 let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-                guard let mainNavigationController = rootViewController as? MainNavigationController else { return }
+//                guard let mainNavigationController = rootViewController as? MainNavigationController else { return }
+                guard let mainNavigationController = rootViewController as? CustomTabBarController else { return }
+
                 let layout = UICollectionViewFlowLayout()
                 let homeController = HomeController(collectionViewLayout: layout)
                 homeController.user = users[0]
-                mainNavigationController.viewControllers = [homeController]
+
+                let allEventsNavController = UINavigationController(rootViewController: homeController)
+                
+                
+                mainNavigationController.viewControllers = [allEventsNavController]
                 UserDefaults.standard.set(true, forKey: "isLoggedIn")
                 UserDefaults.standard.set(users[0].fname, forKey: "fname")
                 UserDefaults.standard.set(users[0].lname, forKey: "lname")

@@ -19,10 +19,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // Do any additional setup after loading the view, typically from a nib.
         setupNavBar()
         fetchEvents()
-        
+        setupCollectionView()
+        setupRefreshControl()
+    }
+    
+    private func setupCollectionView() {
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        
+        collectionView?.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        collectionView?.register(EventCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView?.reloadData()
+    }
+    
+    private func setupRefreshControl() {
         if #available(iOS 10.0, *) {
             collectionView?.refreshControl = refreshControl
         } else {
@@ -31,9 +40,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "Fetching Events ...")
-        collectionView?.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        collectionView?.register(EventCell.self, forCellWithReuseIdentifier: "cellId")
-        collectionView?.reloadData()
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -42,8 +48,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     
-    private func setupNavBar()
-    {
+    private func setupNavBar() {
         if let name = user?.fname {
             navigationItem.title = "Welcome, " + name + "!"
         }
@@ -75,7 +80,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let EventViewController:EventController = EventController(collectionViewLayout: layout)
         EventViewController.event = event
         navigationController?.pushViewController(EventViewController, animated: true)
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
